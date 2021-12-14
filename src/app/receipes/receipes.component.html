@@ -4,11 +4,13 @@
     </app-receipe-list>
   </div>
   <div class="col-md-7">
-    <app-receipe-detail *ngIf="selectedReceipe; else infoText"
+    <app-receipe-detail
+      *ngIf="selectedReceipe; else infoText"
       [receipe]="selectedReceipe"
-    > </app-receipe-detail>
-    <ng-template #infoText>
-      <p>Please select a Receipe!</p>
-    </ng-template>
+    >
+      <ng-template #infoText>
+        <p>Please select a Receipe!</p>
+      </ng-template>
+    </app-receipe-detail>
   </div>
 </div>
