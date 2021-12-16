@@ -11,9 +11,10 @@ import { ReceipeListComponent } from './receipes/receipe-list/receipe-list.compo
 import { ReceipeItemComponent } from './receipes/receipe-list/receipe-item/receipe-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, CommonModule],
   declarations: [
     AppComponent,
     HelloComponent,
