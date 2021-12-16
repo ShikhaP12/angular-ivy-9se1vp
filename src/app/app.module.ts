@@ -14,7 +14,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, BrowserModule],
   declarations: [
     AppComponent,
     HelloComponent,
