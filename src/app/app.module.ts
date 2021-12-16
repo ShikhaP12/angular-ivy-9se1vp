@@ -12,6 +12,7 @@ import { ReceipeItemComponent } from './receipes/receipe-list/receipe-item/recei
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { CommonModule } from '@angular/common';
+import { DropDownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   imports: [FormsModule, CommonModule, BrowserModule, ReactiveFormsModule],
@@ -25,6 +26,7 @@ import { CommonModule } from '@angular/common';
     ReceipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
+    DropDownDirective,
   ],
   bootstrap: [AppComponent],
 })
