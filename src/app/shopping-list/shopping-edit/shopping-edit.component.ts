@@ -13,7 +13,7 @@ import { Ingredient } from '../../shared/ingredient.model';
 })
 export class ShoppingEditComponent {
   @ViewChild('nameInput') nameInputRef: ElementRef;
-  @ViewChild('addressInput') nameAmountRef: ElementRef;
+  @ViewChild('amountInput') nameAmountRef: ElementRef;
 
   @Output() ingredientAdded = new EventEmitter<Ingredient>();
 
