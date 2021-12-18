@@ -7,11 +7,7 @@
 <hr />
 <div class="row">
   <div class="col-xs-12">
-    <app-receipe-item
-      *ngFor="let receipeEl of receipes"
-      [receipe]="receipeEl"
-      (receipeSelected)="onReceipeSelected(receipeEl)"
-    >
+    <app-receipe-item *ngFor="let receipeEl of receipes" [receipe]="receipeEl">
     </app-receipe-item>
   </div>
 </div>
