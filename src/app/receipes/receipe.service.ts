@@ -1,24 +1,26 @@
-import { EventEmitter } from "@angular/core";
-import { Recipe } from "./receipe.model";
+import { EventEmitter } from '@angular/core';
+import { Ingredient } from '../shared/ingredient.model';
+import { Recipe } from './receipe.model';
 
-export class ReceipeService{
-
+export class ReceipeService {
   receipeSelected = new EventEmitter<Recipe>();
-  
+
   private receipes: Recipe[] = [
     new Recipe(
-      'A Test Receipe',
-      'Test Description',
-      'https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_08/1678882/steak-recipe-jc-210223.jpg'
+      'One Large Pizza',
+      'Awesome Pizza',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYJs324suRqRoj8-V4Q850HemlkThtRjYd8w&usqp=CAU',
+      [new Ingredient('cheese', 5), new Ingredient('toppings', 10)]
     ),
     new Recipe(
-      'Another Test Receipe',
-      'Test Description',
-      'https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_08/1678882/steak-recipe-jc-210223.jpg'
+      'Big Fat Burger',
+      'Awesome Burger',
+      'https://static.toiimg.com/photo/79811787.cms',
+      [new Ingredient('Buns', 2), new Ingredient('Cheese Slice', 4)]
     ),
   ];
 
-  getReceipes(){
+  getReceipes() {
     return this.receipes.slice();
   }
 }
