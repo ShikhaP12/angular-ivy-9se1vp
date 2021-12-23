@@ -14,9 +14,16 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { CommonModule } from '@angular/common';
 import { DropDownDirective } from './shared/dropdown.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  imports: [FormsModule, CommonModule, BrowserModule, ReactiveFormsModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+  ],
   declarations: [
     AppComponent,
     HelloComponent,
