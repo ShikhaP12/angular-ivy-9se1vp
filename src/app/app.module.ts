@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { DropDownDirective } from './shared/dropdown.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
+import { ReceipeStartComponent } from './receipes/receipe-start/receipe-start.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { AppRoutingModule } from './app-routing.module';
     ShoppingListComponent,
     ShoppingEditComponent,
     DropDownDirective,
+    ReceipeStartComponent,
   ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent],
