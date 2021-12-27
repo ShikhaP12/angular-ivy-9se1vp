@@ -23,4 +23,8 @@ export class ReceipeService {
   getReceipes() {
     return this.receipes.slice();
   }
+
+  getReceipe(index: number) {
+    return this.receipes[index];
+  }
 }

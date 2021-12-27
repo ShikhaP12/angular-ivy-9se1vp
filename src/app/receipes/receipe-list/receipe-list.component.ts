@@ -8,7 +8,7 @@ import { ReceipeService } from '../receipe.service';
 })
 export class ReceipeListComponent implements OnInit {
   //@Output() receipeWasSelected = new EventEmitter<Recipe>();
-  
+
   receipes: Recipe[];
 
   //onReceipeSelected(receipe: Recipe) {
