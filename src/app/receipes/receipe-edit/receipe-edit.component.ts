@@ -1,0 +1,4 @@
+@Controller
+export class ReceipeEditComponent{
+
+}

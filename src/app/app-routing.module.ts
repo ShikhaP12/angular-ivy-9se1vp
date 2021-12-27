@@ -13,6 +13,7 @@ const appRoutes: Routes = [
     children: [
       { path: '', component: ReceipeStartComponent },
       { path: ':id', component: ReceipeDetailComponent },
+      { path: 'new'}
     ],
   },
   { path: 'shopping-list', component: ShoppingListComponent },
