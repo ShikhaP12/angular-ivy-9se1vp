@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../receipe.model';
 import { ReceipeService } from '../receipe.service';
 
@@ -15,8 +16,16 @@ export class ReceipeListComponent implements OnInit {
   //this.receipeWasSelected.emit(receipe);
   //}
 
-  constructor(private receipeService: ReceipeService) {}
+  constructor(
+    private receipeService: ReceipeService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
   ngOnInit() {
     this.receipes = this.receipeService.getReceipes();
+  }
+
+  onNewReceipe() {
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
 }

@@ -8,10 +8,12 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class ReceipeEditComponent {
   constructor(private route: ActivatedRoute) {}
   id: number;
+  editMode = false;
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
+      this.editMode = params['id'] != null;
     });
   }
 }
