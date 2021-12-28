@@ -13,8 +13,8 @@ const appRoutes: Routes = [
     component: ReceipeComponent,
     children: [
       { path: '', component: ReceipeStartComponent },
-      { path: ':id', component: ReceipeDetailComponent },
       { path: 'new', component: ReceipeEditComponent },
+      { path: ':id', component: ReceipeDetailComponent },
       { path: ':id/edit', component: ReceipeEditComponent },
     ],
   },
