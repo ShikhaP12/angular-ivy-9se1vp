@@ -42,4 +42,8 @@ export class ReceipeEditComponent {
       description: new FormControl(receipeDescription),
     });
   }
+
+  onSubmit() {
+    console.log(this.receipeForm);
+  }
 }
