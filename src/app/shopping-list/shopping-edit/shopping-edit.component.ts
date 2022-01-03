@@ -38,6 +38,10 @@ export class ShoppingEditComponent implements OnDestroy {
         this.editedItemIndex = index;
         this.editMode = true;
         this.editedItem = this.slService.getIngredientEdit(index);
+        this.slForm.setValue({
+          name: this.editedItem.name,
+          amount: this.editedItem.amount,
+        });
       }
     );
   }
@@ -47,6 +51,11 @@ export class ShoppingEditComponent implements OnDestroy {
     const value = form.value;
     const newIngredient = new Ingredient(value.name, value.amount);
     //this.ingredientAdded.emit(newIngredient);
+    if (this.editMode) {
+      this.slService.updateIngredient(this.editedItemIndex, newIngredient);
+    }
+    else{
     this.slService.addIngredient(newIngredient);
+    }
   }
 }
