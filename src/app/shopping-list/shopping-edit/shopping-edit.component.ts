@@ -45,7 +45,7 @@ export class ShoppingEditComponent implements OnDestroy {
       }
     );
   }
-  onAddItem(form: NgForm) {
+  onSubmit(form: NgForm) {
     //const ingName = this.nameInputRef.nativeElement.value;
     //const ingAmount = this.nameAmountRef.nativeElement.value;
     const value = form.value;
@@ -53,9 +53,11 @@ export class ShoppingEditComponent implements OnDestroy {
     //this.ingredientAdded.emit(newIngredient);
     if (this.editMode) {
       this.slService.updateIngredient(this.editedItemIndex, newIngredient);
+    } else {
+      this.slService.addIngredient(newIngredient);
     }
-    else{
-    this.slService.addIngredient(newIngredient);
-    }
+
+    this.editMode = false;
+    form.reset();
   }
 }
