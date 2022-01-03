@@ -20,15 +20,26 @@ export class ShoppingEditComponent implements OnDestroy {
   //@ViewChild('amountInput') nameAmountRef: ElementRef;
 
   //@Output() ingredientAdded = new EventEmitter<Ingredient>();
+  @ViewChild('f', { static: false }) slForm: NgForm;
   subscription: Subscription;
+  editMode = false;
+  editedItemIndex: number;
+  editedItem: Ingredient;
+
   constructor(private slService: ShoppingListService) {}
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
   ngOnInit() {
-    this.subscription = this.slService.startedEditing.subscribe();
+    this.subscription = this.slService.startedEditing.subscribe(
+      (index: number) => {
+        this.editedItemIndex = index;
+        this.editMode = true;
+        this.editedItem = this.slService.getIngredientEdit(index);
+      }
+    );
   }
   onAddItem(form: NgForm) {
     //const ingName = this.nameInputRef.nativeElement.value;
