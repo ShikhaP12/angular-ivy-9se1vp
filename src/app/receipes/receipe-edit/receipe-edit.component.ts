@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ReceipeService } from '../receipe.service';
 
@@ -29,20 +29,36 @@ export class ReceipeEditComponent {
     let receipeName = '';
     let receipeImgPath = '';
     let receipeDescription = '';
+    let receipeIngredients = new FormArray([]);
 
     if (this.editMode) {
       const recipe = this.receipeService.getReceipe(this.id);
       receipeName = recipe.name;
       receipeImgPath = recipe.imagePath;
       receipeDescription = recipe.description;
+
+      if (recipe['ingredients']) {
+        for (let ingredient of recipe.ingredients) {
+          receipeIngredients.push(
+            new FormGroup({
+              name: new FormControl(ingredient.name),
+              amount: new FormControl(ingredient.amount),
+            })
+          );
+        }
+      }
     }
     this.receipeForm = new FormGroup({
       name: new FormControl(receipeName),
       imagePath: new FormControl(receipeImgPath),
       description: new FormControl(receipeDescription),
+      ingredients: receipeIngredients,
     });
   }
 
+  get controls() {
+    return (<FormArray>this.receipeForm.get('ingredients')).controls;
+  }
   onSubmit() {
     console.log(this.receipeForm);
   }
