@@ -16,7 +16,7 @@ export class ReceipeEditComponent {
   id: number;
   editMode = false;
   receipeForm: FormGroup;
-
+    
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
