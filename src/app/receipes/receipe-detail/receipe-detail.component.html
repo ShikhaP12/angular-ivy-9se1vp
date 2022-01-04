@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<div class="row">
+<!--<div class="row">
   <div class="col-xs-12">
     <div class="btn-group" appDropdown>
       <button type="button" class="btn btn-primary dropdown-toggle">
@@ -26,13 +26,15 @@
         <li>
           <a style="cursor:pointer"> Add Ingredients to Shopping List </a>
         </li>
-        <li><a style="cursor:pointer" (click)="onEditRecipe()"> Edit Receipe </a></li>
+        <li>
+          <a style="cursor:pointer" (click)="onEditRecipe()"> Edit Receipe </a>
+        </li>
         <li><a style="cursor:pointer"> Delete Receipe </a></li>
       </ul>
     </div>
   </div>
 </div>
-
+-->
 <div class="row">
   <div class="col-xs-12">{{ receipe.description }}</div>
 </div>
@@ -47,5 +49,16 @@
         {{ ingredient.name }} - {{ ingredient.amount }}
       </li>
     </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-primary">Add Ingredients to List</button>
+    <!--<a style="cursor:pointer" (click)="onEditRecipe()"> Edit Receipe </a> -->
+    <button class="btn btn-success" (click)="onEditRecipe()">
+      Edit Receipe
+    </button>
+    <button class="btn btn-danger">Delete Receipe</button>
   </div>
 </div>
