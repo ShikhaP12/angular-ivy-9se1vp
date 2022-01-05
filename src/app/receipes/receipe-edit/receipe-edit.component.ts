@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ReceipeService } from '../receipe.service';
 
 @Component({
   selector: 'app-receipe-edit',
   templateUrl: './receipe-edit.component.html',
+  styleUrls: ['./receipe-edit.component.css'],
 })
 export class ReceipeEditComponent {
   constructor(
@@ -16,7 +17,7 @@ export class ReceipeEditComponent {
   id: number;
   editMode = false;
   receipeForm: FormGroup;
-    
+
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
@@ -41,17 +42,21 @@ export class ReceipeEditComponent {
         for (let ingredient of recipe.ingredients) {
           receipeIngredients.push(
             new FormGroup({
-              name: new FormControl(ingredient.name),
-              amount: new FormControl(ingredient.amount),
+              name: new FormControl(ingredient.name, Validators.required),
+              amount: new FormControl([
+                ingredient.amount,
+                Validators.required,
+                Validators.pattern('^[1-9]+[0-9]*$'),
+              ]),
             })
           );
         }
       }
     }
     this.receipeForm = new FormGroup({
-      name: new FormControl(receipeName),
-      imagePath: new FormControl(receipeImgPath),
-      description: new FormControl(receipeDescription),
+      name: new FormControl(receipeName, Validators.required),
+      imagePath: new FormControl(receipeImgPath, Validators.required),
+      description: new FormControl(receipeDescription, Validators.required),
       ingredients: receipeIngredients,
     });
   }
@@ -61,5 +66,18 @@ export class ReceipeEditComponent {
   }
   onSubmit() {
     console.log(this.receipeForm);
+  }
+
+  onAddIngredient() {
+    (<FormArray>this.receipeForm.get('ingredients')).push(
+      new FormGroup({
+        name: new FormControl(null, Validators.required),
+        amount: new FormControl([
+          null,
+          Validators.required,
+          Validators.pattern('^[1-9]+[0-9]*$'),
+        ]),
+      })
+    );
   }
 }

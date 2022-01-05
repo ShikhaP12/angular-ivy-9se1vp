@@ -3,7 +3,13 @@
     <form [formGroup]="receipeForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-success">Save</button>
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!receipeForm.valid"
+          >
+            Save
+          </button>
           <button type="button" class="btn btn-danger">Cancel</button>
         </div>
       </div>
@@ -81,7 +87,11 @@
           </div>
           <div class="row">
             <div class="col-xs-12">
-              <button class="btn btn-success" (click)="onAddIngredient()">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="onAddIngredient()"
+              >
                 Add Ingredient
               </button>
             </div>
