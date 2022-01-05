@@ -27,4 +27,11 @@ export class ReceipeService {
   getReceipe(index: number) {
     return this.receipes[index];
   }
+
+  addReceipe(receipe: Recipe) {
+    this.receipes.push(receipe);
+  }
+  updateReceipe(index: number, newReceipe: Recipe) {
+    this.receipes[index] = newReceipe;
+  }
 }

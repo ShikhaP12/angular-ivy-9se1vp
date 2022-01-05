@@ -65,7 +65,10 @@ export class ReceipeEditComponent {
     return (<FormArray>this.receipeForm.get('ingredients')).controls;
   }
   onSubmit() {
-    console.log(this.receipeForm);
+    const newReceipe= new 
+    if(this.editMode){
+      this.receipeService.updateReceipe(this.id);
+    }
   }
 
   onAddIngredient() {
