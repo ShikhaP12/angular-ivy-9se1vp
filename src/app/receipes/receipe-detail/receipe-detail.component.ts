@@ -35,5 +35,6 @@ export class ReceipeDetailComponent {
   }
   onDeleteReceipe() {
     this.receipeService.deleteReceipe(this.id);
+    this.router.navigate(['/receipes']);
   }
 }
