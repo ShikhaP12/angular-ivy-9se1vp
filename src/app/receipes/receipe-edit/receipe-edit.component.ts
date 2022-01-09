@@ -98,4 +98,8 @@ export class ReceipeEditComponent {
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
+
+  onDeleteIngredient(index: number) {
+    (<FormArray>this.receipeForm.get('ingredients')).removeAt(index);
+  }
 }
