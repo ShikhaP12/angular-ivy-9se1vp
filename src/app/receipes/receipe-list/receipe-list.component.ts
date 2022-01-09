@@ -1,5 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Recipe } from '../receipe.model';
 import { ReceipeService } from '../receipe.service';
 
@@ -7,14 +14,9 @@ import { ReceipeService } from '../receipe.service';
   selector: 'app-receipe-list',
   templateUrl: './receipe-list.component.html',
 })
-export class ReceipeListComponent implements OnInit {
-  //@Output() receipeWasSelected = new EventEmitter<Recipe>();
-
+export class ReceipeListComponent implements OnInit, OnDestroy {
   receipes: Recipe[];
-
-  //onReceipeSelected(receipe: Recipe) {
-  //this.receipeWasSelected.emit(receipe);
-  //}
+  subscription: Subscription;
 
   constructor(
     private receipeService: ReceipeService,
@@ -22,12 +24,17 @@ export class ReceipeListComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
   ngOnInit() {
-    this.receipeService.receipeChanged.subscribe((receipes: Recipe[]) => {
-      this.receipes = receipes;
-    });
+    this.subscription = this.receipeService.receipeChanged.subscribe(
+      (receipes: Recipe[]) => {
+        this.receipes = receipes;
+      }
+    );
     this.receipes = this.receipeService.getReceipes();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
   onNewReceipe() {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
