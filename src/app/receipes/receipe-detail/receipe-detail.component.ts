@@ -33,4 +33,7 @@ export class ReceipeDetailComponent {
   onAddToShoppingList() {
     this.receipeService.addIngredientsToShoppingList(this.receipe.ingredients);
   }
+  onDeleteReceipe() {
+    this.receipeService.deleteReceipe(this.id);
+  }
 }

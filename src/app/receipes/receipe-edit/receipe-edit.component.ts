@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../receipe.model';
 import { ReceipeService } from '../receipe.service';
 
@@ -12,7 +12,8 @@ import { ReceipeService } from '../receipe.service';
 export class ReceipeEditComponent {
   constructor(
     private route: ActivatedRoute,
-    private receipeService: ReceipeService
+    private receipeService: ReceipeService,
+    private router: Router
   ) {}
 
   id: number;
@@ -77,6 +78,8 @@ export class ReceipeEditComponent {
     } else {
       this.receipeService.addReceipe(newReceipe);
     }
+
+    this.onCancel();
   }
 
   onAddIngredient() {
@@ -90,5 +93,9 @@ export class ReceipeEditComponent {
         ),
       })
     );
+  }
+
+  onCancel() {
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }
