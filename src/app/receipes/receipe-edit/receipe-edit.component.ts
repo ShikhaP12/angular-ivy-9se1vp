@@ -74,6 +74,8 @@ export class ReceipeEditComponent {
     );
     if (this.editMode) {
       this.receipeService.updateReceipe(this.id, newReceipe);
+    } else {
+      this.receipeService.addReceipe(newReceipe);
     }
   }
 

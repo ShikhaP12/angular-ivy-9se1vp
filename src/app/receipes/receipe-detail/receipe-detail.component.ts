@@ -29,4 +29,8 @@ export class ReceipeDetailComponent {
     this.router.navigate(['edit'], { relativeTo: this.route });
     // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
+
+  onAddToShoppingList() {
+    this.receipeService.addIngredientsToShoppingList(this.receipe.ingredients);
+  }
 }
