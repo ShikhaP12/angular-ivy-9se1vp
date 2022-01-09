@@ -5,7 +5,7 @@ import { ReceipeService } from './receipe.service';
 @Component({
   selector: 'app-receipes',
   templateUrl: './receipes.component.html',
-  providers: [ReceipeService],
+  //providers: [ReceipeService],
 })
 export class ReceipeComponent {
   selectedReceipe: Recipe;
