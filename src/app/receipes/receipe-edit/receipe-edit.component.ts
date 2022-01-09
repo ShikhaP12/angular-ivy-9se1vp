@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Recipe } from '../receipe.model';
 import { ReceipeService } from '../receipe.service';
 
 @Component({
@@ -65,9 +66,14 @@ export class ReceipeEditComponent {
     return (<FormArray>this.receipeForm.get('ingredients')).controls;
   }
   onSubmit() {
-    const newReceipe= new 
-    if(this.editMode){
-      this.receipeService.updateReceipe(this.id);
+    const newReceipe = new Recipe(
+      this.receipeForm.value['name'],
+      this.receipeForm.value['description'],
+      this.receipeForm.value['imagePath'],
+      this.receipeForm.value['ingredients']
+    );
+    if (this.editMode) {
+      this.receipeService.updateReceipe(this.id, newReceipe);
     }
   }
 
