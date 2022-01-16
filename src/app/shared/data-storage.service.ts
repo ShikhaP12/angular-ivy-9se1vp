@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, tap } from 'rxjs/operators';
 import { Recipe } from '../receipes/receipe.model';
 import { ReceipeService } from '../receipes/receipe.service';
 
@@ -23,12 +24,22 @@ export class DataStorageService {
   }
 
   fetchReceipes() {
-    this.http
+    return this.http
       .get<Recipe[]>(
         'https://ng-complete-guide-a57f0-default-rtdb.firebaseio.com/receipe.json'
       )
-      .subscribe((receipes) => {
-        this.receipeService.setReceipes(receipes);
-      });
+      .pipe(
+        map((receipes) => {
+          return receipes.map((receipe) => {
+            return {
+              ...receipe,
+              ingredients: receipe.ingredients ? receipe.ingredients : [],
+            };
+          });
+        }),
+        tap((receipes) => {
+          this.receipeService.setReceipes(receipes);
+        })
+      );
   }
 }
