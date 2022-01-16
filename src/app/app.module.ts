@@ -20,6 +20,7 @@ import { ReceipeStartComponent } from './receipes/receipe-start/receipe-start.co
 import { ReceipeEditComponent } from './receipes/receipe-edit/receipe-edit.component';
 import { ReceipeService } from './receipes/receipe.service';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { AuthComponent } from './auth/auth.component';
     ReceipeStartComponent,
     ReceipeEditComponent,
     AuthComponent,
+    LoadingSpinnerComponent,
   ],
   providers: [ShoppingListService, ReceipeService],
   bootstrap: [AppComponent],
