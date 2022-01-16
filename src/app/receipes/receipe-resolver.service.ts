@@ -18,10 +18,9 @@ export class ReceipeResolverService implements Resolve<Recipe[]> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const receipes = this.receipeService.getReceipes();
 
-    if(receipes.length === 0){
-    return this.dataStorageService.fetchReceipes();
-    }
-    else{
+    if (receipes.length === 0) {
+      return this.dataStorageService.fetchReceipes();
+    } else {
       return receipes;
     }
   }
