@@ -8,11 +8,11 @@ import { NgForm } from '@angular/forms';
 export class AuthComponent {
   isLoginMode = true;
 
-  onSwitchMode(){
-    this.isLoginMode= ! this.isLoginMode;
+  onSwitchMode() {
+    this.isLoginMode = !this.isLoginMode;
   }
 
-  onSubmit(form:NgForm){
+  onSubmit(form: NgForm) {
     form.reset();
   }
 }
