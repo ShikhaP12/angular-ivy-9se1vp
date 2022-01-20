@@ -34,7 +34,11 @@ export class AuthComponent {
         },
         (error) => {
           console.log(error);
-          this.error="An Error Occured";
+          switch (error.error.error.message) {
+            case 'EMAIL_EXISTS':
+              this.error = 'This email already exists';
+          }
+          this.error = 'An Error Occured';
           this.isLoading = false;
         }
       );
