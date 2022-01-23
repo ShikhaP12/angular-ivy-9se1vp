@@ -6,7 +6,7 @@
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active">
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
           <a routerLink="/receipes"> Receipes</a>
         </li>
         ||
@@ -15,12 +15,12 @@
         </li>
         ||
 
-        <li routerLinkActive="active">
+        <li routerLinkActive="active" *ngIf="!isAuthenticated">
           <a routerLink="/auth"> Authenticate </a>
         </li>
         ||
 
-        <li routerLinkActive="active">
+        <li routerLinkActive="active" >
           <a routerLink=""> Logout </a>
         </li>
         ||||
