@@ -54,7 +54,7 @@ export class AuthService {
       case 'EMAIL_NOT_FOUND':
         errorMessage = 'This email does not exists';
         break;
-        case 'INVALID_PASSWORD' :
+      case 'INVALID_PASSWORD':
         errorMessage = 'Password is not correct';
         break;
     }
